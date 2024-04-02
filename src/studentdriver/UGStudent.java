@@ -54,7 +54,7 @@ public class UGStudent extends StudentFees {
     public String toString() {
         return super.toString() + "\nScholarship: " + this.hasScholarship
                 + "\nScholarship Amount: " + this.scholarshipAmount + "\nCourses Enrolled: " + this.coursesEnrolled
-                + "\nPayable Amount: " + getPayableAmount();
+                + "\nPayable Amount: " + String.format("%.2f", getPayableAmount());
     }
 
 }

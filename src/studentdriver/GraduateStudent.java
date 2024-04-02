@@ -15,6 +15,15 @@ public class GraduateStudent extends StudentFees {
     private String graduateAssistantType;
     private final double ADDITIONAL_FEES = 654.45;
 
+    /**
+     *
+     * @param studentName
+     * @param studentId
+     * @param isEnrolled
+     * @param isGraduateAssistant
+     * @param graduateAssistantType
+     * @param coursesEnrolled
+     */
     public GraduateStudent(String studentName, int studentId, boolean isEnrolled,
             boolean isGraduateAssistant, String graduateAssistantType, int coursesEnrolled) {
         super(studentName, studentId, isEnrolled);
@@ -49,9 +58,10 @@ public class GraduateStudent extends StudentFees {
         }
     }
 
+    @Override
     public String toString() {
         return super.toString() + "\nGraduate Assistant: " + this.isGraduateAssistant + "\nGraduate Assistant Type: " + this.graduateAssistantType + "\nCourses Enrolled: " + this.coursesEnrolled
-                + "\nPayable Amount: " + getPayableAmount();
+                + "\nPayable Amount: " + String.format("%.2f", getPayableAmount());
     }
 
 }
