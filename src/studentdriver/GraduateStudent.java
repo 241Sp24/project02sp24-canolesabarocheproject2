@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package studentdriver;
 
 /**
@@ -32,6 +28,14 @@ public class GraduateStudent extends StudentFees {
         this.coursesEnrolled = coursesEnrolled;
     }
 
+    /**
+     *
+     * @param studentName
+     * @param studentId
+     * @param isEnrolled
+     * @param isGraduateAssistant
+     * @param coursesEnrolled
+     */
     public GraduateStudent(String studentName, int studentId, boolean isEnrolled,
             boolean isGraduateAssistant, int coursesEnrolled) {
         super(studentName, studentId, isEnrolled);
@@ -54,15 +58,19 @@ public class GraduateStudent extends StudentFees {
         return isGraduateAssistant;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public double getPayableAmount() {
         if (graduateAssistantType.equals("full")) {
-            return (this.coursesEnrolled * super.getCREDIT_PER_COURSE() * super.getPER_CREDIT_FEE()) * 0;
+            return ADDITIONAL_FEES;
         } else if (graduateAssistantType.equals("half")) {
 
-            return (this.coursesEnrolled * super.getCREDIT_PER_COURSE() * super.getPER_CREDIT_FEE()) / 2;
+            return (this.coursesEnrolled * super.getCREDIT_PER_COURSE() * super.getPER_CREDIT_FEE()) / 2 + ADDITIONAL_FEES;
         } else {
-            return (this.coursesEnrolled * super.getCREDIT_PER_COURSE() * super.getPER_CREDIT_FEE());
+            return (this.coursesEnrolled * super.getCREDIT_PER_COURSE() * super.getPER_CREDIT_FEE()) + ADDITIONAL_FEES;
         }
     }
 

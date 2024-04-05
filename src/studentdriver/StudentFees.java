@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package studentdriver;
 
 /**
@@ -16,6 +12,12 @@ public abstract class StudentFees {
     private final int CREDIT_PER_COURSE = 3;
     private final double PER_CREDIT_FEE = 543.50;
 
+    /**
+     *
+     * @param studentName
+     * @param studentId
+     * @param isEnrolled
+     */
     public StudentFees(String studentName, int studentId, boolean isEnrolled) {
         this.studentName = studentName;
         this.studentID = studentId;
@@ -78,8 +80,16 @@ public abstract class StudentFees {
         return PER_CREDIT_FEE;
     }
 
+    /**
+     *
+     * @return
+     */
     public abstract double getPayableAmount();
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Student Name: " + this.studentName + "\nStudentID: " + this.studentID
