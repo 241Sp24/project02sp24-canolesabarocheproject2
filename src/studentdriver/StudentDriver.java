@@ -131,11 +131,16 @@ public class StudentDriver {
 
                 //Undergraduate details computations
                 if (a.isIsEnrolled() == true) {
+                    //Computes total Payable amount from each student
                     ugFees += a.getPayableAmount();
+                    //Gathers total number of courses enrolled of each student
                     ugCourse += ((UGStudent) a).getCoursesEnrolled();
+                    //Counts the number of students with scholarships
                     if (((UGStudent) a).isHasScholarship() == true) {
                         noOfScholarships++;
                     }
+                } else {
+                    noOfUGStudents--;
                 }
             }
         }
@@ -148,10 +153,17 @@ public class StudentDriver {
                 System.out.println("");
 
                 //Graduate Students details computations
-                gradFees += a.getPayableAmount();
-                gradCourses += ((GraduateStudent) a).getCoursesEnrolled();
-                if (((GraduateStudent) a).isIsGraduateAssistant() == true) {
-                    gradAssistants++;
+                if (a.isIsEnrolled() == true) {
+                    //Computes total payable amount from each student
+                    gradFees += a.getPayableAmount();
+                    //Gathers total number of courses enrolled from each student
+                    gradCourses += ((GraduateStudent) a).getCoursesEnrolled();
+                    //Counts the number of Graduate Assistants
+                    if (((GraduateStudent) a).isIsGraduateAssistant() == true) {
+                        gradAssistants++;
+                    }
+                } else {
+                    noOfGrads--;
                 }
             }
         }
@@ -164,13 +176,18 @@ public class StudentDriver {
                 System.out.println("");
 
                 //Online Students details computations
-                osFees += a.getPayableAmount();
+                if (a.isIsEnrolled() == true) {
+                    //Computes total payable amount from each student
+                    osFees += a.getPayableAmount();
+                } else {
+                    noOfOS--;
+                }
             }
         }
 
         //Prints out Undergraduate Students details with header
         System.out.println("**********Undergraduate Students details**********");
-        System.out.printf("Average Student fees: %.2f\n", +(ugFees / 4));
+        System.out.printf("Average Student fees: %.2f\n", +(ugFees / noOfUGStudents));
         System.out.println("Scholarship count: " + noOfScholarships);
         System.out.println("Total number of courses: " + (ugCourse));
         System.out.println("");
